@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 import AppScreen from '../pages/AppScreen';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();     // Criando Tab 
 
 export default () => {
     return (
