@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import StarterScreen from '../pages/StarterScreen';
 import NameScreen from '../pages/NameScreen';
 import DayScreen from '../pages/DayScreen';
+import NivelScreen from '../pages/NivelScreen';
 
 const StarterStack = createStackNavigator();        // Criando stack
 
@@ -13,6 +14,7 @@ export default () => {
             <StarterStack.Screen name="Intro" component={StarterScreen}/>
             <StarterStack.Screen name="Name" component={NameScreen}/>
             <StarterStack.Screen name="Day" component={DayScreen}/>
+            <StarterStack.Screen name="Nivel" component={NivelScreen}/>
         </StarterStack.Navigator>
     );
 }

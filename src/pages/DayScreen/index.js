@@ -15,7 +15,7 @@ import BtnComponent from '../../components/BtnComponent';
 
 function DayScreen(props) {
     const nameUser = useSelector(state => state.user.name);     // Pegando o nome do usuário armazenado no reducer
-    const workoutDays = useSelector(state => state.user.workoutDays);  // Pegando o workoutDays do usuário no reducer 
+    const workoutDays = useSelector(state => state.user.workoutDays);
     const navigation = useNavigation();
     
     let firstName = nameUser.split(' ')[0];
