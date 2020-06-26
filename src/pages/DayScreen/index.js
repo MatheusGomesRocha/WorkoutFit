@@ -14,22 +14,31 @@ import { useNavigation } from '@react-navigation/native';
 import BtnComponent from '../../components/BtnComponent';
 
 function DayScreen(props) {
-    const nameUser = useSelector(state => state.user.name);
-    const days = useSelector(state => state.user.workoutDays);
+    const nameUser = useSelector(state => state.user.name);     // Pegando o nome do usuário armazenado no reducer
+    const workoutDays = useSelector(state => state.user.workoutDays);  // Pegando o workoutDays do usuário no reducer 
     const navigation = useNavigation();
-
+    
     let firstName = nameUser.split(' ')[0];
 
-    function toogleDay(d) {
-        let newWorkoutDays = [...props.workoutDays];
+    function toogleDay(d) {     // Function que passa os dias selecionados para o reducer
+        let newWorkoutDays = [...props.workoutDays];        // Faz uma cópia do array workoutDays
         
-        if(!props.workoutDays.includes(d)) {
-            newWorkoutDays.push(d);
-        } else {
-            newWorkoutDays = newWorkoutDays.filter(i=>i!=d);
+        // Aqui é como se fosse um checkbox
+        if(!props.workoutDays.includes(d)) {        // Verifica se o Day selecionado já está selecionado
+            newWorkoutDays.push(d);     // Senão estiver, acrescenta ele
+        } else {        // Se estiver selecionado
+            newWorkoutDays = newWorkoutDays.filter(i=>i!=d);        // Desmarca a opção
         }
 
-        props.setWorkoutDays(newWorkoutDays);
+        props.setWorkoutDays(newWorkoutDays); // Envia os dias selecionados para o mapStateToProps para fazer a inserção no reducer
+    }
+
+    function next () {
+        if(workoutDays.length > 7) {        // .lenght maior que 7 pq sem querer adicionei um nome no array do workoutDays
+            navigation.navigate('Nivel');
+        } else {
+            alert('Você precisa treinar pelo menos 1 dia');
+        }
     }
 
     return(
@@ -96,21 +105,23 @@ function DayScreen(props) {
                    <TextoDay> Domingo </TextoDay>
                </BtnComponent>
            </ViewDay>
+           <Btn onPress={next}>
+               <Texto> Próximo </Texto>
+           </Btn>
        </Container>
     );
 }
 
 
-
 const mapStateToProps = (state) => {  /** Passa as states pegas nos reducers e transforma em props */
     return {
-        workoutDays: state.user.workoutDays
+        workoutDays: state.user.workoutDays     // Pegando os valores do reducer
     };
 }
 
 const mapDispatchToProps = (dispatch) => {          /** Executa uma função que cria uma props para a tela */
     return {
-        setWorkoutDays:(workoutDays)=>dispatch({type:'SET_DAYS', payload: {workoutDays}})
+        setWorkoutDays:(workoutDays)=>dispatch({type:'SET_DAYS', payload: {workoutDays}})       // Fazendo a inserção no reducer
     };
 
 }
