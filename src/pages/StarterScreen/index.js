@@ -1,4 +1,4 @@
-import React, {useLayoutEffect } from 'react';
+import React from 'react';
 import {
     Texto,
     Container,
@@ -18,14 +18,7 @@ export default () => {
     function Start () {
         navigation.navigate('Name');
     }
-
-
-    /** options={{
-                headerTitle: null,  // Tirando o title do header
-                headerTransparent: true,    // Esconder o header
-            }}
-             */
-
+    
     return(
         <Container>
             <Texto> Bem vindo(a) ao WorkoutFit </Texto>
