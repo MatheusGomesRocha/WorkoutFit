@@ -5,6 +5,7 @@ import StarterScreen from '../pages/StarterScreen';
 import NameScreen from '../pages/NameScreen';
 import DayScreen from '../pages/DayScreen';
 import NivelScreen from '../pages/NivelScreen';
+import RecommendationScreen from '../pages/RecommendationScreen';
 
 const StarterStack = createStackNavigator();        // Criando stack
 
@@ -15,6 +16,7 @@ export default () => {
             <StarterStack.Screen name="Name" component={NameScreen}/>
             <StarterStack.Screen name="Day" component={DayScreen}/>
             <StarterStack.Screen name="Nivel" component={NivelScreen}/>
+            <StarterStack.Screen name="Recommendation" component={RecommendationScreen}/>
         </StarterStack.Navigator>
     );
 }

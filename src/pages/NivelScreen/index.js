@@ -50,7 +50,7 @@ function NivelScreen (props) {
         if(!nivel) {
             alert('Você precisa escolher um nível');
         } else {
-            navigation.navigate('Recommendations')
+            navigation.navigate('Recommendation')
         }
     }
 
