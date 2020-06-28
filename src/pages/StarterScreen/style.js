@@ -31,3 +31,4 @@ export const BtnView = styled.View`
 export const BtnText = styled.Text`
     color: #fff;
 `;
+

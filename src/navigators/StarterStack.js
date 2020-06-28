@@ -11,7 +11,7 @@ const StarterStack = createStackNavigator();        // Criando stack
 export default () => {
     return (
         <StarterStack.Navigator>
-            <StarterStack.Screen name="Intro" component={StarterScreen}/>
+            <StarterStack.Screen name="Intro" component={StarterScreen} options={{ title: 'awesome app'}}/>
             <StarterStack.Screen name="Name" component={NameScreen}/>
             <StarterStack.Screen name="Day" component={DayScreen}/>
             <StarterStack.Screen name="Nivel" component={NivelScreen}/>

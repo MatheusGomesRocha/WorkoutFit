@@ -4,10 +4,8 @@ import {
     Texto,
     Input,
 } from './style';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-
 
 export default () => {
     const navigation = useNavigation();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import {
     Texto,
     Container,
@@ -20,7 +20,7 @@ export default () => {
     }
     
     return(
-        <Container>
+        <Container> 
             <Texto> Bem vindo(a) ao WorkoutFit </Texto>
             <ImgView>
                 <Img source={require('../../assets/boneco.png')}/>
