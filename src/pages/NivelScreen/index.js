@@ -50,7 +50,12 @@ function NivelScreen (props) {
         if(!nivel) {
             alert('Você precisa escolher um nível');
         } else {
-            navigation.navigate('Recommendations')
+            navigation.reset({
+                index: 0,
+                routes: [
+                    {name: 'AppTab'}
+                ]
+            });
         }
     }
 

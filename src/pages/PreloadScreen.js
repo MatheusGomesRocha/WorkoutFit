@@ -12,7 +12,7 @@ export default (props) => {
     const name = useSelector(state => state.user.name); // Peguei nome do usuário no Reducer
     const navigation = useNavigation();
 
-    if(name) {     // mandar para tela StarterStack, quando não tiver se "cadastrado" no app
+    if(!name) {     // mandar para tela StarterStack, quando não tiver se "cadastrado" no app
         navigation.reset({       // " Reseta a tela para qual está sendo redirecionada"    
             index: 0,       // Faz com que a página redirecionada seja a primeira, ou seja, sendo impossível voltar para a tela de preload
             routes: [       // Aqui recebe o nome rota como objeto e sempre dentro de um array
