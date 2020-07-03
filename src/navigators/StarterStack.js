@@ -1,10 +1,10 @@
 import React, { useLayoutEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-import StarterScreen from '../pages/StarterScreen';
-import NameScreen from '../pages/NameScreen';
-import DayScreen from '../pages/DayScreen';
-import NivelScreen from '../pages/NivelScreen';
+import StarterScreen from '../pages/StarterStackScreen';
+import NameScreen from '../pages/NameStackScreen';
+import DayScreen from '../pages/DayStackScreen';
+import NivelScreen from '../pages/NivelStackScreen';
 
 const StarterStack = createStackNavigator();        // Criando stack
 
