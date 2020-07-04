@@ -12,6 +12,7 @@ import {
 import { useSelector, useDispatch, connect } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import BtnComponent from '../../components/BtnComponent';
+import { BtnView, DefaultBtn, DefaultView, BtnText} from '../../components/BtnNext';
 
 function DayScreen(props) {
     const nameUser = useSelector(state => state.user.name);     // Pegando o nome do usuário armazenado no reducer
@@ -33,7 +34,11 @@ function DayScreen(props) {
         props.setWorkoutDays(newWorkoutDays); // Envia os dias selecionados para o mapStateToProps para fazer a inserção no reducer
     }
 
-    function next () {
+    function goBack () {
+        navigation.goBack();
+    }
+
+    function goNext () {
         if(workoutDays.length > 7) {        // .lenght maior que 7 pq sem querer adicionei um nome no array do workoutDays
             navigation.navigate('Nivel');
         } else {
@@ -105,9 +110,18 @@ function DayScreen(props) {
                    <TextoDay> Domingo </TextoDay>
                </BtnComponent>
            </ViewDay>
-           <Btn onPress={next}>
-               <Texto> Próximo </Texto>
-           </Btn>
+           <BtnView>
+                <DefaultView align="flex-end">
+                    <DefaultBtn underlayColor="#0b7ac6" bgColor="#0072c0" onPress={goBack}>
+                        <BtnText> Anterior </BtnText>
+                    </DefaultBtn>
+                </DefaultView>
+                <DefaultView align="flex-start">
+                    <DefaultBtn underlayColor="#0b7ac6" bgColor="#0072c0" onPress={goNext}>
+                        <BtnText> Próximo </BtnText>
+                    </DefaultBtn>
+                </DefaultView>
+            </BtnView>
        </Container>
     );
 }

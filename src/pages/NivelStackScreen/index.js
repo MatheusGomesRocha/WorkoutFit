@@ -11,6 +11,7 @@ import BtnComponent from '../../components/BtnComponent';
 
 import { useSelector, useDispatch, connect } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+import { BtnView, DefaultBtn, DefaultView, BtnText} from '../../components/BtnNext';
 
 function NivelScreen (props) {
     const navigation = useNavigation();
@@ -46,7 +47,11 @@ function NivelScreen (props) {
         props.setNivel(n);
     }
 
-    function Next() {
+    function goBack () {
+        navigation.goBack();
+    }
+
+    function goNext () {
         if(!nivel) {
             alert('Você precisa escolher um nível');
         } else {
@@ -89,9 +94,18 @@ function NivelScreen (props) {
                         <Bold> Avançado / Primo do The Rock </Bold>
                     </BtnComponent>
                 </ViewNivel>
-                <Btn onPress={Next}>
-                    <Texto> Próximo </Texto>
-                </Btn>
+                <BtnView>
+                <DefaultView align="flex-end">
+                    <DefaultBtn underlayColor="#0b7ac6" bgColor="#0072c0" onPress={goBack}>
+                        <BtnText> Anterior </BtnText>
+                    </DefaultBtn>
+                </DefaultView>
+                <DefaultView align="flex-start">
+                    <DefaultBtn underlayColor="#0b7ac6" bgColor="#0072c0" onPress={goNext}>
+                        <BtnText> Próximo </BtnText>
+                    </DefaultBtn>
+                </DefaultView>
+            </BtnView>
         </Container>
     );
 }

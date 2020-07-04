@@ -58,11 +58,10 @@ export default ({state, descriptors, navigation}) => {      // Passa obrigatóri
             label = options.title;
         }
 
-        let nameIcon = null;
-
         switch(route.name) {        /** props.name significa o route.name que foi passado */
             case 'Home':            /** Caso o nome da rota for Home então... */
                 nameIcon = 'home';
+                
             break;
             case 'Workouts':           /** Caso for About então... */
                 nameIcon = require('../assets/dumbbell.png');   // Fiz como Image pq não encontrei Icon parecido

@@ -4,6 +4,7 @@ import {
     Container,
     Texto
 } from './style';
+import { useNavigation } from '@react-navigation/native';
 
 export default () => {
     const name = useSelector(state=>state.user.name);

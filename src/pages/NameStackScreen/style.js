@@ -20,3 +20,4 @@ export const Input = styled.TextInput`
     font-size: 18px;
     padding: 10px;
 `;
+

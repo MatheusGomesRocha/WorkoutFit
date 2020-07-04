@@ -14,7 +14,10 @@ export default () => {
                 title: null,
                 headerTransparent: true,
             }}/>
-            <MainStack.Screen name="AppTab" component={AppTab}/>
+            <MainStack.Screen name="AppTab" component={AppTab} options={{
+                title: null,
+                headerTransparent: true,
+            }}/>
         </MainStack.Navigator>
     );
 }
