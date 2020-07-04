@@ -4,6 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import PreloadScreen from '../pages/PreloadScreen';
 import StarterStack from './StarterStack';
 import AppTab from './AppTab';
+import BtnComponent from '../components/BtnComponent';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 const MainStack = createStackNavigator();       // Criando Stack
 
 export default () => {
@@ -15,8 +18,20 @@ export default () => {
                 headerTransparent: true,
             }}/>
             <MainStack.Screen name="AppTab" component={AppTab} options={{
-                title: null,
-                headerTransparent: true,
+                headerTitle: 'WorkoutFit',
+                headerTitleAlign: 'center',
+                headerRight: (props) => (
+                    <BtnComponent
+                        {...props}
+                        onPress={() => {
+                            alert('indo para settings');
+                        }}
+                        backgroundColor="transparent"
+                        underlayColor="transparent"
+                    >
+                        <Icon name="cog" size={25}/>
+                    </BtnComponent>
+                ),
             }}/>
         </MainStack.Navigator>
     );
