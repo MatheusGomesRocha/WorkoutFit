@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const MainStack = createStackNavigator();       // Criando Stack
 
+
 export default () => {
     return (
         <MainStack.Navigator>

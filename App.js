@@ -5,13 +5,14 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react'
 import { store, persistor } from './src/store';
 import MainStack from './src/navigators/MainStack';
+import AppTab from './src/navigators/AppTab';
 
 function App () {
     return (  
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <NavigationContainer>
-                    <MainStack/>
+                    <AppTab/>
                 </NavigationContainer>
             </PersistGate>
         </Provider>   
