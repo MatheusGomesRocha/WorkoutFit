@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { 
     Container,
@@ -9,25 +9,26 @@ import {
     SubtitleBox
 } from './style';
 import { useNavigation } from '@react-navigation/native';
-import MonthScroll from '../../components/MonthScroll';
+import HomeMonthScroll from '../../components/MonthScroll';
 import DayScroll from '../../components/DayScroll';
 import DayStatus from '../../components/DayStatus';
 
-export default () => {
-    const name = useSelector(state=>state.user.name);
-    const nivel = useSelector(state=>state.user.nivel);
-    const days = useSelector(state=>state.user.workoutDays);
-    const navigation = useNavigation();
+export default (props) => {
+    let today = new Date();
 
+    const [selectMonth, setSelectMonth] = useState(today.getMonth());
     return(
         <Container>
-            <MonthScroll/>
-            <DayScroll/>
-            <DayStatus/>
-
-            <Subtitle>
+            <HomeMonthScroll
+                selectMonth={selectMonth}
+                setMonth={setSelectMonth}
+            />       
+            <DayScroll/>         
+            <DayStatus/>        
+            
+             <Subtitle>    
                 <SubtitleText> Legenda: </SubtitleText>
-                <SubtitleItem>
+                <SubtitleItem>  
                     <SubtitleBox bgColor="#b5eeff"></SubtitleBox>
                     <SubtitleText> Hoje </SubtitleText>
                 </SubtitleItem>
@@ -39,8 +40,8 @@ export default () => {
                     <SubtitleBox bgColor="#ffb5b5"></SubtitleBox>
                     <SubtitleText> Treino perdido </SubtitleText>
                 </SubtitleItem>
-                <SubtitleItem>
-                    <SubtitleBox bgColor="#ddd"></SubtitleBox>
+                <SubtitleItem>  
+                    <SubtitleBox bgColor="#eee"></SubtitleBox>
                     <SubtitleText> Dia de descanso </SubtitleText>
                 </SubtitleItem>
                 <SubtitleItem>

@@ -13,43 +13,46 @@ const Tab = createBottomTabNavigator();     // Criando Tab
 
 export default () => {
     return (
-        <Tab.Navigator  
-            lazy={true}
-            initialRouteName="Workouts"
+        <Tab.Navigator
+            lazy={true}     // Redenrizar apenas a tab em que o usuário está vendo
+            initialRouteName="Home"     // Iniciar o App em Home/Início
             tabBarOptions={{ 
-                showIcon: true,
-                showLabel: true,
-                activeTintColor: '#000',
-                inactiveTintColor: '#aaa',
-                style: {
+                showIcon: true,     // Mostrar os icons
+                showLabel: true,    // Mostrar o Label
+                activeTintColor: '#000',    // Cor quando a tab estiver "focada"
+                inactiveTintColor: '#aaa',  // Cor quando não estiver "focada"
+                style: {    // Estilo da TabBar
                     height: 60,
                     padding: 8,
                 },
-                labelStyle: {
+                labelStyle: {   // Estilo do Label
                     fontSize: 15,
                     paddingBottom: 5
                 }
             }}
-            screenOptions={({route}) =>({
-                tabBarIcon: ({ focused }) => {
-                    let imgSource = null;
+            screenOptions={({route}) =>({           // Passando route como objeto para pegar o nome das rotas futuramente
+                tabBarIcon: ({ focused }) => {      // Adicionando Icons dinamicamente
+                    let icon = null;      // Atribui null para iniciar a variável que irá receber o Icone
     
-                    switch(route.name) {
-                        case 'Home':
-                            imgSource = 'home';
+                    switch(route.name) {        // Laço de repetição que pega o nome da rota (tem que passa como objeto no screenOptions)
+                        case 'Home':        // Se nome da rota for Home
+                            icon = 'home';  
                         break;
-                        case 'Workouts':
-                            imgSource = focused ? 'heart' : 'heart-o';
+                        case 'Workouts':        // Se for Workouts
+                            icon = focused ? 'heart' : 'heart-o';       // depois do "?" retorna true
+                            // Se o usuário estiver na Tab Workouts, recebe o coração preenchido, se não estiver, recebe o coração vazio
                         break;
-                        case 'MyWorkouts':
-                            imgSource = 'tasks';
+                        case 'MyWorkouts':      // Se for MyWorkouts
+                            icon = 'tasks';
                         break;
-                        case 'Settings':
-                            imgSource = 'cog';
+                        case 'Settings':        // Se for Settings
+                            icon = 'cog';
                         break;
                     }
-    
-                    return <Icon name={imgSource} size={25} style={{ color: focused ? '#000' : '#999'}}/>
+                    
+                    // name no Icon irá receber a variável para ser adicionado dinamicamente
+                    // Se a Tab estiver focado, irá receber a cor Preta ´para dar um destaque a mais dos outros 
+                    return <Icon name={icon} size={25} style={{ color: focused ? '#000' : '#999'}}/>
                 }
             })} 
         > 
