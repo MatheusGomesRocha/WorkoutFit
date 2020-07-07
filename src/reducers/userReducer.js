@@ -12,12 +12,12 @@ export default (state = initialState, action) => {  // Sempre state e action com
         case 'SET_NAME':
             return {...state, name: action.payload.name};
         break;
-        case 'SET_DAYS':
-            return {...state, workoutDays: action.payload.workoutDays}
-        break;
         case 'SET_NIVEL':
             return {...state, nivel: action.payload.nivel}
-        break;    
+        break; 
+        case 'SET_DAYS':
+            return {...state, workoutDays: action.payload.workoutDays}
+        break;           
     }
 
     return state;

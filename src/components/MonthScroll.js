@@ -2,13 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
-const MonthScroll = styled.ScrollView``;
+const MonthScroll = styled.ScrollView`
+    width: 100%;
+    height: 60px;
+`;
 
 const MonthButton = styled.TouchableHighlight`
     width: ${props=>props.width};
     align-items: center;
     justify-content: center;
-    margin-top: 15px;
 `;
 
 const Item = styled.View`
@@ -39,7 +41,7 @@ export default (props) => {
         setSelectMonth(targetMonth);
     }
 
-    function scrollToMonth(m) {     // Função que realiza o Scroll para o mês atual
+    function scrollToMonth(m) {     // Função que realiza o Scroll para o mês selecionado
         let posX = m * thirdS;
         monthRef.current.scrollTo({x: posX, y:0, animated: true})
     }

@@ -17,15 +17,28 @@ export default (props) => {
     let today = new Date();
 
     const [selectMonth, setSelectMonth] = useState(today.getMonth());
+    const [selectDay, setSelectDay] = useState(today.getDate());
+
+    const Progress = useSelector(state => state.user.dailyProgress);
+    const WorkoutDays = useSelector(state => state.user.workoutDays);
     return(
         <Container>
             <HomeMonthScroll
                 selectMonth={selectMonth}
                 setMonth={setSelectMonth}
             />       
-            <DayScroll/>         
+            <DayScroll
+                selectMonth={selectMonth}
+                selectDay={selectDay}
+                setSelectDay={setSelectDay}
+
+                dailyProgress={Progress}
+                workoutDays={WorkoutDays}
+            />         
             <DayStatus/>        
             
+            <Texto> {selectMonth} </Texto>
+            <Texto> {selectDay} </Texto>
              <Subtitle>    
                 <SubtitleText> Legenda: </SubtitleText>
                 <SubtitleItem>  
