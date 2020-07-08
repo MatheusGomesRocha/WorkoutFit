@@ -8,6 +8,8 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {  // Sempre state e action como parâmetros
+    let dailyProgress = [...state.dailyProgress];
+
     switch(action.type) {
         case 'SET_NAME':
             return {...state, name: action.payload.name};
@@ -18,6 +20,16 @@ export default (state = initialState, action) => {  // Sempre state e action com
         case 'SET_DAYS':
             return {...state, workoutDays: action.payload.workoutDays}
         break;           
+        case 'ADD_PROG':
+            if(!dailyProgress.includes(action.payload.date)) {
+                dailyProgress.push(action.payload.date);
+            }
+            return {...state, dailyProgress};
+        break;
+        case 'DEL_PROG':
+            dailyProgress = dailyProgress.filter(i=>i!=action.payload.date);
+            return {...state, dailyProgress}
+        break;
     }
 
     return state;

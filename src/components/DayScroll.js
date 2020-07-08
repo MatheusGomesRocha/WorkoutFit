@@ -34,11 +34,11 @@ let dayWPx = Math.round(screenSize / 9) + "px";   // Usar para passar a prop de 
 let dayW = Math.round(screenSize / 9);        // Usar para o snapToInterval
 let offsetW = Math.round((screenSize - dayW) / 2);
 
-function Day ({month, day, dailyProgress, workoutDays, onPress}) {
+function Day ({month, day, dailyProgress, workoutDays, onPress}) {      // função que pega se o dia que o usuário selecionou/dias normais é menor, maior ou igual ao dia atual
     let bgColor= '#bbb';
 
     let today = new Date();
-    today.setHours(0);
+    today.setHours(0);      // zera a hora
     today.setMinutes(0);
     today.setSeconds(0);
     today.setMilliseconds(0);
@@ -138,7 +138,6 @@ export default (props) => {
                     month={props.selectMonth}
                     dailyProgress={Progress}
                     workoutDays={WorkoutDays}
-                    onPress={()=> scrollToDay(d)}
                 />
             ))}
         </DayScroll>

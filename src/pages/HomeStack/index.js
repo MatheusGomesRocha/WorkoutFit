@@ -1,5 +1,5 @@
 import React, {useLayoutEffect, useState} from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, connect, useDispatch } from 'react-redux';
 import { 
     Container,
     Texto,
@@ -13,7 +13,9 @@ import HomeMonthScroll from '../../components/MonthScroll';
 import DayScroll from '../../components/DayScroll';
 import DayStatus from '../../components/DayStatus';
 
-export default (props) => {
+export default () => {
+    const navigation = useNavigation();
+    const dispatch = useDispatch();
     let today = new Date();
 
     const [selectMonth, setSelectMonth] = useState(today.getMonth());
@@ -21,6 +23,22 @@ export default (props) => {
 
     const Progress = useSelector(state => state.user.dailyProgress);
     const WorkoutDays = useSelector(state => state.user.workoutDays);
+
+    function addProgress (dFormated) {
+         dispatch ({
+            type: 'ADD_PROG',
+            payload: {date: dFormated}
+         });
+    }
+
+    function delProgress (dFormated) {
+        dispatch ({
+            type: 'DEL_PROG',
+            payload: { date: dFormated}
+        })
+    }
+
+   
     return(
         <Container>
             <HomeMonthScroll
@@ -35,7 +53,18 @@ export default (props) => {
                 dailyProgress={Progress}
                 workoutDays={WorkoutDays}
             />         
-            <DayStatus/>        
+            <DayStatus
+                selectMonth={selectMonth}
+                selectDay={selectDay}
+                setSelectDay={setSelectDay}
+
+                dailyProgress={Progress}
+                workoutDays={WorkoutDays}
+
+                addProgress={addProgress}
+                delProgress={delProgress}
+                toWorkout={() => navigation.navigate('Workouts')}
+            />        
             
             <Texto> {selectMonth} </Texto>
             <Texto> {selectDay} </Texto>
@@ -65,5 +94,3 @@ export default (props) => {
         </Container>
     );
 }
-
-
